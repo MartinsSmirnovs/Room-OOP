@@ -34,7 +34,7 @@ class SolidRainbow : public Animation
 { //inherited solid rainbow class
 public:
     SolidRainbow(int startDelayTime);
-    SolidRainbow(){};
+    // SolidRainbow(){};
     void execute(byte rgbArr[3]);
     void firstTime(byte part[3]); //if there were an animation other than solid rainbow running before, then this should be executed to start new cycle
 private:
@@ -49,27 +49,36 @@ public:
     SolidBlink(int startDelayTime);
     void execute(byte rgbArr[3]);
     void firstTime(byte part[3]);
+
 private:
     byte _rgbPart[3];
-    bool _onOffState;//saves last state of blink
+    bool _onOffState; //saves last state of blink
 };
 
 class Fire : public Animation
 {
 public:
-    Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel * stripPointer);
+    Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj);
     void execute(byte rgbArr[3]);
     void firstTime(byte part[3]);
+
 private:
     byte _numLeds;
-    Adafruit_NeoPixel * _strip;
+    Adafruit_NeoPixel _strip;
 };
 
 class Rainbow : public Animation
 {
 public:
-    Rainbow(int startDelayTime);
+    Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj);
     void execute(byte rgbArr[3]);
+    void firstTime(byte part[3]);
+
+private:
+    byte * rainbowWheel(byte WheelPos);
+    byte _numLeds;
+    Adafruit_NeoPixel _strip;
+    int _rainbowCounter;
 };
 
 #endif

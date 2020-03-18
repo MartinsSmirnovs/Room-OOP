@@ -2,12 +2,15 @@
 #include "Animations.h"
 #include "Adafruit_NeoPixel.h"
 
-Fire::Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel *stripPointer)
+Fire::Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj)
 {
   name = "Fire";
   _delayTime = startDelayTime;
-  byte _numLeds = numLeds;
-  Adafruit_NeoPixel *_strip = stripPointer;
+  _numLeds = numLeds;
+  
+  _strip = stripObj;
+  _strip.clear(); //notīra iepriekšējās krāsas no krāsu lentas
+  _strip.show();  //apdeito krāsu lentu, lai iepriekšējās krāsas tiktu notīrītas
 }
 
 void Fire::execute(byte rgbArr[3])
@@ -24,7 +27,6 @@ void Fire::execute(byte rgbArr[3])
     for (int i = 0; i < _numLeds; i++)
     {
       cooldown = random(0, ((Cooling * 10) / _numLeds) + 2);
-
       if (cooldown > heat[i])
       {
         heat[i] = 0;
@@ -51,7 +53,6 @@ void Fire::execute(byte rgbArr[3])
     // Step 4.  Convert heat to LED colors
     for (int j = 0; j < _numLeds; j++)
     {
-      Serial.println(j);
       // Scale 'heat' down from 0-255 to 0-191
       byte t192 = round((heat[j] / 255.0) * 191);
 
@@ -62,20 +63,20 @@ void Fire::execute(byte rgbArr[3])
       // figure out which third of the spectrum we're in:
       if (t192 > 0x80)
       { // hottest
-        _strip->setPixelColor(j, 255, heatramp, 255);
+        _strip.setPixelColor(j, 255, heatramp, 255);
       }
       else if (t192 > 0x40)
       { // middle
-        _strip->setPixelColor(j, heatramp, 0, 255);
+        _strip.setPixelColor(j, heatramp, 0, 255);
       }
       else
       { // coolest
-        _strip->setPixelColor(j, 0, 0, heatramp);
+        _strip.setPixelColor(j, 0, 0, heatramp);
       }
     }
   }
 }
 
-void Fire::firstTime(byte part[3]){
-  
+void Fire::firstTime(byte part[3])
+{
 }
