@@ -3,13 +3,13 @@
 # Table of contents
 - [Usage](https://github.com/Onii-Chaan/SGLS-Web-controller#usage)
 - [Libraries used](https://github.com/Onii-Chaan/SGLS-Web-controller#libraries-used)
-  - [Animations.h](https://github.com/Onii-Chaan/SGLS-Web-controller#lamp-code)
-  - [ButtonInput.h](https://github.com/Onii-Chaan/SGLS-Web-controller#lamp-hub)
-  - [Formicarium.h](https://github.com/Onii-Chaan/SGLS-Web-controller#lamp-hub-code)
-  - [Led.h](https://github.com/Onii-Chaan/SGLS-Web-controller#server-code)
-  - [Other libraries](https://github.com/Onii-Chaan/SGLS-Web-controller#server-code)
-- [Main.cpp](https://github.com/Onii-Chaan/SGLS-Web-controller#main-controller-web-page)
-- [Setup](https://github.com/Onii-Chaan/SGLS-Web-controller#first-time-set-web-page)
+  - [Animations.h](https://github.com/Onii-Chaan/SGLS-Web-controller#animationsh)
+  - [ButtonInput.h](https://github.com/Onii-Chaan/SGLS-Web-controller#buttoninputh)
+  - [Formicarium.h](https://github.com/Onii-Chaan/SGLS-Web-controller#formicariumh)
+  - [Led.h](https://github.com/Onii-Chaan/SGLS-Web-controller#ledh)
+  - [Other libraries](https://github.com/Onii-Chaan/SGLS-Web-controller#other-libraries)
+- [Main.cpp](https://github.com/Onii-Chaan/SGLS-Web-controller#maincpp)
+- [Setup](https://github.com/Onii-Chaan/SGLS-Web-controller#setup)
 
 # Usage
 This code was made for Aduino UNO shield, that controls lighting in room. You can switch between colors and animations using OLED display, two buttons and potentiometer. Current code controls four main parts in the room, that are displayed on screen, they are:
@@ -91,6 +91,7 @@ After 300000 milliseconds, OLED displey goes dark to "sleep mode", you can wake 
 Here is the circuit I made for this code. 
 - For stable readings from potentiometer, a small 100nF optional capacitor may be placed. Transistor values may vary depending on current flow through them. 
 - I used two external power supplies, 5V and 12V
+- For uploading and developing code I used PlatformIO
 ![Image of Yaktocat](https://i.ibb.co/jrKcgDb/Schematic-Room-light-v3-Sheet-1-20200322223808.png)
 
 
