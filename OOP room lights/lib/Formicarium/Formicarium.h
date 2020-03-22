@@ -16,10 +16,12 @@ public:
     AntVent(){};
     void staticRun();//runs pwm
     void updateVal(int pwmToCheck);//updates pwm value on pin
-    void stop(bool type);//stops pwm
+    void stop();//stops pwm
     String getName();//returns name of this object
     byte getPwm();//returns saved pwm value
     int getMode();
+    String getState();
+    bool getRun();
 protected:
     bool _run;//checks if staticRun has to run
     String _name;//name of object
@@ -32,7 +34,7 @@ class AntLed : public AntVent
 {
 public:
     AntLed(byte pin, String name, int mode);//initializes object
-    void smoothStart(bool type);//starts smoothly
+    void smoothStart();//starts smoothly
     void run();//runs through functions
     void fade();//fades
     void updateMode(int mode);//update function type to execute

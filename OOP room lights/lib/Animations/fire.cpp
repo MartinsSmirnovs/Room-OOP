@@ -2,15 +2,15 @@
 #include "Animations.h"
 #include "Adafruit_NeoPixel.h"
 
-Fire::Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj)
+Fire::Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel * stripObj)
 {
   name = "Fire";
   _delayTime = startDelayTime;
   _numLeds = numLeds;
   
   _strip = stripObj;
-  _strip.clear(); //notīra iepriekšējās krāsas no krāsu lentas
-  _strip.show();  //apdeito krāsu lentu, lai iepriekšējās krāsas tiktu notīrītas
+  _strip->clear(); //notīra iepriekšējās krāsas no krāsu lentas
+  _strip->show();  //apdeito krāsu lentu, lai iepriekšējās krāsas tiktu notīrītas
 }
 
 void Fire::execute(byte rgbArr[3])
@@ -63,17 +63,18 @@ void Fire::execute(byte rgbArr[3])
       // figure out which third of the spectrum we're in:
       if (t192 > 0x80)
       { // hottest
-        _strip.setPixelColor(j, 255, heatramp, 255);
+        _strip->setPixelColor(j, 255, 255, heatramp);
       }
       else if (t192 > 0x40)
       { // middle
-        _strip.setPixelColor(j, heatramp, 0, 255);
+        _strip->setPixelColor(j, 255, heatramp, 0);
       }
       else
       { // coolest
-        _strip.setPixelColor(j, 0, 0, heatramp);
+        _strip->setPixelColor(j, heatramp, 0, 0);
       }
     }
+    _strip->show();
   }
 }
 

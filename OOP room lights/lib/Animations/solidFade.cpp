@@ -14,7 +14,7 @@ void SolidFade::execute(byte rgbArr[3])
     unsigned long time = millis();
     for (byte i = 0; i < 3; i++)
     {
-        rgbArr[i] = (_rgbPart[i] / 2) + (_rgbPart[i] / 2) * cos(2 * PI / _delayTime * time);
+        rgbArr[i] = (_rgbPart[i] / 2) + (_rgbPart[i] / 2) * sin(2 * PI / (_delayTime * 100) * time);
     }
 }
 

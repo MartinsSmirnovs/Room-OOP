@@ -13,10 +13,18 @@ public:
     int getDelay();                           //returns current delayTime of object
     virtual void execute(byte rgbArr[3]) = 0; //executes
     virtual void firstTime(byte part[3]) = 0; //prepares for execution
-    virtual ~Animation(){};                   //class destructor
+    virtual ~Animation() = default;           //class destructor
 protected:
     int _delayTime;
     unsigned long _oldTimeInt;
+};
+
+class Default : public Animation{
+    public:
+        Default(){};
+        ~Default() = default;
+        void execute(byte rgbArr[3]){}
+        void firstTime(byte part[3]){}
 };
 
 class SolidFade : public Animation
@@ -58,26 +66,26 @@ private:
 class Fire : public Animation
 {
 public:
-    Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj);
+    Fire(int startDelayTime, byte numLeds, Adafruit_NeoPixel * stripObj);
     void execute(byte rgbArr[3]);
     void firstTime(byte part[3]);
 
 private:
     byte _numLeds;
-    Adafruit_NeoPixel _strip;
+    Adafruit_NeoPixel *_strip;
 };
 
 class Rainbow : public Animation
 {
 public:
-    Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj);
+    Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel * stripObj);
     void execute(byte rgbArr[3]);
     void firstTime(byte part[3]);
 
 private:
     byte * rainbowWheel(byte WheelPos);
     byte _numLeds;
-    Adafruit_NeoPixel _strip;
+    Adafruit_NeoPixel *_strip;
     int _rainbowCounter;
 };
 

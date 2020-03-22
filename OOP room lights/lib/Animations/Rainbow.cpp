@@ -2,7 +2,7 @@
 #include "Animations.h"
 #include "Adafruit_NeoPixel.h"
 
-Rainbow::Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj)
+Rainbow::Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel *stripObj)
 {
     name = "Rainbow";
     _delayTime = startDelayTime;
@@ -10,8 +10,8 @@ Rainbow::Rainbow(int startDelayTime, byte numLeds, Adafruit_NeoPixel &stripObj)
     _rainbowCounter = 0;
 
     _strip = stripObj;
-    _strip.clear(); //notīra iepriekšējās krāsas no krāsu lentas
-    _strip.show();  //apdeito krāsu lentu, lai iepriekšējās krāsas tiktu notīrītas
+    _strip->clear(); //notīra iepriekšējās krāsas no krāsu lentas
+    _strip->show();  //apdeito krāsu lentu, lai iepriekšējās krāsas tiktu notīrītas
 }
 
 void Rainbow::execute(byte rgbArr[3])
@@ -25,9 +25,10 @@ void Rainbow::execute(byte rgbArr[3])
         for (i = 0; i < _numLeds; i++)
         {
             c = rainbowWheel(((i * 256 /_numLeds) + _rainbowCounter) & 255);
-            _strip.setPixelColor(i, *c, *(c + 1), *(c + 2));
+            _strip->setPixelColor(i, *c, *(c + 1), *(c + 2));
         }
         _rainbowCounter++;
+        _strip->show();
     }
 }
 

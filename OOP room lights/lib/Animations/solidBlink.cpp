@@ -3,11 +3,12 @@
 
 SolidBlink::SolidBlink(int startDelayTime)
 {
-    _delayTime = startDelayTime * 10;
+    _delayTime = startDelayTime;
     name = "Solid Blink";
-    unsigned long _oldTimeInt;
-    byte _rgbPart[3];
-    bool _onOffState;
+    _oldTimeInt = 0;
+    for(byte i = 0; i<3; i++)
+        _rgbPart[i] = 0;
+    _onOffState = false;
 }
 
 void SolidBlink::firstTime(byte part[3])
@@ -20,7 +21,7 @@ void SolidBlink::firstTime(byte part[3])
 
 void SolidBlink::execute(byte rgbArr[3])
 {
-    if (millis() - _oldTimeInt >= _delayTime)
+    if (millis() - _oldTimeInt >= _delayTime*10)
     {
         _oldTimeInt = millis();
         if (_onOffState)

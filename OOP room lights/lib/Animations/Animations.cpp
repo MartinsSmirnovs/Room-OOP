@@ -3,9 +3,9 @@
 
 Animation::Animation()
 {
-    String name;
-    int _delayTime;
-    unsigned long _oldTimeInt;
+    name = "";
+    _delayTime = 0;
+    _oldTimeInt = 0;
 }
 
 void Animation::setDelay(int setDelayTime)

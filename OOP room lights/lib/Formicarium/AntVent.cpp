@@ -6,41 +6,34 @@ AntVent::AntVent(byte pin, String name, int mode)
     _pin = pin;
     _name = name;
     _pwm = 255;
-    _mode = 0;
     pinMode(pin, OUTPUT);
+    digitalWrite(_pin, LOW);
+    _run = false;
 }
 
 void AntVent::staticRun()
 {
-    if (_run == true)
-    {
-        analogWrite(_pin, _pwm);
-    }
-    else
-    {
-        analogWrite(_pin, 0);
-    }
+    digitalWrite(_pin, _run);
 }
 
 void AntVent::updateVal(int pwmToCheck)
 {
     if (pwmToCheck > 255)
-    {
         _pwm = 255;
-    }
     else if (pwmToCheck < 0)
-    {
         _pwm = 0;
-    }
     else
-    {
         _pwm = pwmToCheck;
-    }
 }
 
-void AntVent::stop(bool type)
+void AntVent::stop()
 {
-    _run = !type;
+    _run = !_run;
+}
+
+String AntVent::getState(){
+    if(_run) return "Turn OFF";
+    else return "Turn ON";
 }
 
 String AntVent::getName()
@@ -56,4 +49,8 @@ byte AntVent::getPwm()
 int AntVent::getMode()
 {
     return _mode;
+}
+
+bool AntVent::getRun(){
+    return _run;
 }

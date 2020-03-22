@@ -13,7 +13,10 @@ SolidRainbow::SolidRainbow(int startDelayTime)
 
 void SolidRainbow::firstTime(byte rgbArr[3])
 {
-    rgbArr[0], rgbArr[2], _decColor, _rainbowCounter = 0;
+    rgbArr[0] = 0; 
+    rgbArr[2] = 0; 
+    _decColor = 0; 
+    _rainbowCounter = 0;
     rgbArr[1] = 255;
 }
 

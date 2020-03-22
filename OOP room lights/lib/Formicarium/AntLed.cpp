@@ -10,6 +10,8 @@ AntLed::AntLed(byte pin, String name, int mode)
     _timeInt = 0;
     _fadeCount = 0;
     pinMode(pin, OUTPUT);
+    digitalWrite(_pin, LOW);
+    _run = false;
 }
 
 void AntLed::setSpeed(int speed)
@@ -21,29 +23,23 @@ void AntLed::run()
 {
     switch (_mode)
     {
-    case 0:
-        // staticRun();
-        break;
     case 1:
-        smoothStart(true);
+        smoothStart();
         break;
     case 2:
-        smoothStart(false);
-        break;
-    case 3:
         fade();
         break;
     default:
         break;
     }
-    staticRun();
+    analogWrite(_pin, _pwm);
 }
 
-void AntLed::smoothStart(bool type)
+void AntLed::smoothStart()
 {
     if (millis() - _timeInt >= 10)
     {
-        if (type)
+        if (_run)
         {
             updateVal(_pwm + 10);
         }
@@ -53,6 +49,7 @@ void AntLed::smoothStart(bool type)
         }
         _timeInt = millis();
     }
+    analogWrite(_pin, _pwm);
 }
 
 void AntLed::updateMode(int mode)
@@ -71,7 +68,7 @@ void AntLed::fade()
     {
         _timeInt = millis();
         float angle = radians(_fadeCount);                   // Converts degrees to radians.
-        int brightness = (255 / 2) + (255 / 2) * sin(angle); // Generates points on a sign wave.
+        int brightness = (255 / 2) + (255 / 2) * cos(angle); // Generates points on a sign wave.
         updateVal(brightness);
         _fadeCount++;
     }
@@ -81,3 +78,4 @@ unsigned long AntLed::getTimeInt()
 {
     return _timeInt;
 }
+

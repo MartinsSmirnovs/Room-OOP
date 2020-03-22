@@ -23,5 +23,6 @@ class Input{
         unsigned long _startTopTime;//for checking passed time since user has pressed the button 
         unsigned long _startBotTime;
         unsigned long _startDoubleTime;
+        int _prevPot[10];
 };
 #endif

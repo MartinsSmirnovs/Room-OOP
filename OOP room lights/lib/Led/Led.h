@@ -10,11 +10,15 @@ class Led{
         void execute();
         byte rgb[3]; //stores 12v led strip rgb values
         String state();
+        bool getRun();
+        void stop();
+        String getState();
+    private:
+        bool _run;
 };
 
 class AdrLed : public Led {
     public:
-        AdrLed(String objName, Adafruit_NeoPixel & stripObj);
-        Adafruit_NeoPixel strip;
+        AdrLed(String objName);
 };
 #endif

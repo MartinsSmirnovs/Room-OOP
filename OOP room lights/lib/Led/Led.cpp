@@ -10,13 +10,14 @@ Led::Led(byte redPin, byte greenPin, byte bluePin, String objName)
   pinMode(bluePin, OUTPUT);
   for (byte i = 0; i < 3; i++)
     rgb[0] = 0;
+  _run = false;
 }
 
 void Led::execute()
 {
-  analogWrite(3, rgb[0]);
-  analogWrite(5, rgb[1]);
-  analogWrite(6, rgb[2]);
+  analogWrite(5, rgb[0]);
+  analogWrite(6, rgb[1]);
+  analogWrite(3, rgb[2]);
 }
 
 String Led::state()
@@ -30,8 +31,31 @@ String Led::state()
   }
 }
 
-AdrLed::AdrLed(String objName, Adafruit_NeoPixel &stripObj)
+String Led::getState()
 {
-  strip = stripObj;
+  if (_run)
+    return "Turn OFF";
+  else
+    return "Turn ON";
+}
+
+void Led::stop()
+{
+  _run = !_run;
+  if (_run)
+    for (byte i = 0; i < 3; i++)
+      rgb[i] = 255;
+  else
+    for (byte i = 0; i < 3; i++)
+      rgb[i] = 0;
+}
+
+bool Led::getRun()
+{
+  return _run;
+}
+
+AdrLed::AdrLed(String objName)
+{
   name = objName;
 }
