@@ -4,7 +4,7 @@
 - [Usage](https://github.com/Onii-Chaan/Room-OOP#usage)
 - [Libraries used](https://github.com/Onii-Chaan/Room-OOP#libraries-used)
   - [Animations.h](https://github.com/Onii-Chaan/Room-OOP#animationsh)
-  - [ButtonInput.h](https://github.com/Onii-Chaan/Room-OOP#buttoninputh)
+  - [ButtonInput.h](https://github.com/Onii-Chaan/Room-OOP#inputh)
   - [Formicarium.h](https://github.com/Onii-Chaan/Room-OOP#formicariumh)
   - [Led.h](https://github.com/Onii-Chaan/Room-OOP#ledh)
   - [Other libraries](https://github.com/Onii-Chaan/Room-OOP#other-libraries)
@@ -92,6 +92,7 @@ Here is the circuit I made for this code.
 - For stable readings from potentiometer, a small 100nF optional capacitor may be placed. Transistor values may vary depending on current flow through them. 
 - I used two external power supplies, 5V and 12V
 - For uploading and developing code I used PlatformIO
+- Video of finished project: https://youtu.be/z_hNoXVGOck
 ![Image of Yaktocat](https://i.ibb.co/jrKcgDb/Schematic-Room-light-v3-Sheet-1-20200322223808.png)
 
 
