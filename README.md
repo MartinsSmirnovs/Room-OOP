@@ -1,15 +1,15 @@
 # Room Lighting control
 
 # Table of contents
-- [Usage](https://github.com/Onii-Chaan/SGLS-Web-controller#usage)
-- [Libraries used](https://github.com/Onii-Chaan/SGLS-Web-controller#libraries-used)
-  - [Animations.h](https://github.com/Onii-Chaan/SGLS-Web-controller#animationsh)
-  - [ButtonInput.h](https://github.com/Onii-Chaan/SGLS-Web-controller#buttoninputh)
-  - [Formicarium.h](https://github.com/Onii-Chaan/SGLS-Web-controller#formicariumh)
-  - [Led.h](https://github.com/Onii-Chaan/SGLS-Web-controller#ledh)
-  - [Other libraries](https://github.com/Onii-Chaan/SGLS-Web-controller#other-libraries)
-- [Main.cpp](https://github.com/Onii-Chaan/SGLS-Web-controller#maincpp)
-- [Setup](https://github.com/Onii-Chaan/SGLS-Web-controller#setup)
+- [Usage](https://github.com/Onii-Chaan/Room-OOP#usage)
+- [Libraries used](https://github.com/Onii-Chaan/Room-OOP#libraries-used)
+  - [Animations.h](https://github.com/Onii-Chaan/Room-OOP#animationsh)
+  - [ButtonInput.h](https://github.com/Onii-Chaan/Room-OOP#buttoninputh)
+  - [Formicarium.h](https://github.com/Onii-Chaan/Room-OOP#formicariumh)
+  - [Led.h](https://github.com/Onii-Chaan/Room-OOP#ledh)
+  - [Other libraries](https://github.com/Onii-Chaan/Room-OOP#other-libraries)
+- [Main.cpp](https://github.com/Onii-Chaan/Room-OOP#maincpp)
+- [Setup](https://github.com/Onii-Chaan/Room-OOP#setup)
 
 # Usage
 This code was made for Aduino UNO shield, that controls lighting in room. You can switch between colors and animations using OLED display, two buttons and potentiometer. Current code controls four main parts in the room, that are displayed on screen, they are:
