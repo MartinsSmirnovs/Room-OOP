@@ -324,11 +324,11 @@ void buildOptions(String menuData[8], int newSpeed = 0, int red = 0, int green =
     }
     else
     {
-      if (red != lastPotVal - 1 && menuState == 1 && abs(red - lastPotVal < 15))//sets new color values. -1 because values is maped from 1-256 but we need 0-255 for pwm
+      if (red != lastPotVal - 1 && menuState == 1 && abs(red - lastPotVal) < 15)//sets new color values. -1 because values is maped from 1-256 but we need 0-255 for pwm
         red = lastPotVal - 1;
-      else if (green != lastPotVal - 1 && menuState == 2 && abs(green - lastPotVal < 15))
+      else if (green != lastPotVal - 1 && menuState == 2 && abs(green - lastPotVal) < 15)
         green = lastPotVal - 1;
-      else if (blue != lastPotVal - 1 && menuState == 3 && abs(blue - lastPotVal < 15))
+      else if (blue != lastPotVal - 1 && menuState == 3 && abs(blue - lastPotVal ) < 15)
         blue = lastPotVal - 1;
 
       colorOptions[1] = "Red:   <" + String(red) + ">"; //sets displayed data in array
