@@ -15,6 +15,9 @@ class Led{
         String getState();
     private:
         bool _run;
+        byte _redPin;
+        byte _bluePin;
+        byte _greenPin;
 };
 
 class AdrLed : public Led {

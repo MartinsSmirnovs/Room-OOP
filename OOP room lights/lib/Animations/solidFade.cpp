@@ -3,7 +3,7 @@
 
 SolidFade::SolidFade(int startDelayTime)
 {
-    _delayTime = startDelayTime * 100;
+    _delayTime = startDelayTime * 500;
     name = "Solid Fade";
     unsigned long _oldTimeInt;
     byte _rgbPart[3];

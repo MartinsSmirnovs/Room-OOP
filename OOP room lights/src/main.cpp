@@ -14,9 +14,9 @@
 
 #define NUM_LEDS 79
 
-#define redPin 3
-#define greenPin 5
-#define bluePin 6
+#define redPin 5
+#define greenPin 6
+#define bluePin 3
 
 #define outLedPin 9
 #define ventPin 10
@@ -575,10 +575,3 @@ void loop()
   else
     readPot = false;
 }
-
-// Serial.println(map(input.getPot(), 0, 1023, 1, 255));
-
-//  if (readPot){
-//    antLed.setSpeed(map(input.getPot(), 0, 1023, 1, 1000));
-//    animSpee
-//  }

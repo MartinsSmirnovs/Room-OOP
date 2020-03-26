@@ -5,9 +5,12 @@
 Led::Led(byte redPin, byte greenPin, byte bluePin, String objName)
 {
   name = objName;
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
+  _redPin = redPin;
+  _greenPin = greenPin;
+  _bluePin = bluePin;
+  pinMode(_redPin, OUTPUT);
+  pinMode(_greenPin, OUTPUT);
+  pinMode(_bluePin, OUTPUT);
   for (byte i = 0; i < 3; i++)
     rgb[0] = 0;
   _run = false;
@@ -15,9 +18,9 @@ Led::Led(byte redPin, byte greenPin, byte bluePin, String objName)
 
 void Led::execute()
 {
-  analogWrite(5, rgb[0]);
-  analogWrite(6, rgb[1]);
-  analogWrite(3, rgb[2]);
+  analogWrite(_redPin, rgb[0]);
+  analogWrite(_greenPin, rgb[1]);
+  analogWrite(_bluePin, rgb[2]);
 }
 
 String Led::state()
